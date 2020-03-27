@@ -1337,7 +1337,7 @@ class DiscourseClient(object):
         """
         return self._request(DELETE, path, params=kwargs)
 
-    def _request(self, verb, path, params={}, files={}, data={}, json={}):
+    def _request(self, verb, path, params={}, files={}, data={}, json={}, verify=False):
         """
         Executes HTTP request to API and handles response
 
@@ -1374,6 +1374,7 @@ class DiscourseClient(object):
                 json=json,
                 headers=headers,
                 timeout=self.timeout,
+                verify=verify
             )
 
             log.debug("response %s: %s", response.status_code, repr(response.text))
